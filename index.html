@@ -1,0 +1,1941 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+  <!-- ==================== META 基本設定 ==================== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hanna 形象美學工作室</title>
+  
+  <!-- ==================== 外部資源載入 ==================== -->
+  <!-- Element SDK -->
+  <script src="/_sdk/element_sdk.js"></script>
+  
+  <!-- Google Fonts: 中文字體 + 英文襯線字體 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&amp;family=Cormorant+Garamond:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  
+  <!-- ==================== 樣式表 ==================== -->
+  <style>
+    /* ==================== 全域重置與基礎設定 ==================== */
+    body {
+      box-sizing: border-box;
+    }
+    
+    *, *::before, *::after {
+      box-sizing: inherit;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* 主要 body 樣式 */
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #E0D9E1; /* 淡紫灰背景色 */
+      color: #2E2E2E; /* 深灰文字 */
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* 應用程式包裝器 */
+    .app-wrapper {
+      width: 100%;
+      min-height: 100%;
+      background: #E0D9E1;
+    }
+
+    /* ==================== Header 區塊 - 韓系極簡風格 ==================== */
+    header {
+      background: #E0D9E1;
+      padding: 60px 20px 40px;
+      text-align: center;
+      border-bottom: 1px solid #F0F0F0;
+    }
+
+    /* 主標題 */
+    .main-title {
+      font-family: 'Cormorant Garamond', serif; /* 使用襯線字體 */
+      font-size: 2.2rem;
+      font-weight: 300;
+      color: #2E2E2E;
+      margin-bottom: 16px;
+      letter-spacing: 3px; /* 字距加寬 */
+    }
+
+    /* 🔹 Logo 圖片樣式 */
+    .main-logo {
+      max-width: 200px; /* 🔹 最大寬度 200px,可調整 */
+      height: auto; /* 🔹 高度自動,保持比例 */
+      margin-bottom: 16px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      /* 🔹 淡入動畫 */
+      animation: logoFadeIn 1s ease-in-out;
+      /* 🔹 如果 logo 太小,可以調整 */
+      /* max-width: 300px; */
+    }
+
+    /* 🔹 Logo 淡入動畫 */
+    @keyframes logoFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* 🔹 手機版 Logo 調整 */
+    @media (max-width: 768px) {
+      .main-logo {
+        max-width: 150px; /* 手機版稍微小一點 */
+      }
+    }
+
+    /* 副標題 */
+    .subtitle {
+      font-size: 0.85rem;
+      color: #888;
+      font-weight: 300;
+      margin-bottom: 24px;
+      letter-spacing: 2px;
+      text-transform: uppercase; /* 英文大寫 */
+    }
+
+    /* 分隔線 */
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: #2E2E2E;
+      margin: 0 auto;
+    }
+
+    /* ==================== 促銷橫幅 ==================== */
+    .promo-banner {
+      background: #E0D9E1; /* 淡紫灰背景色 */
+      padding: 14px 20px;
+      text-align: center;
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #2E2E2E;
+      border-bottom: 1px solid #E8E8E8;
+      letter-spacing: 0.5px;
+    }
+
+  /* ==================== 導航列 - 韓系簡約風 (滑動版) ==================== */
+
+    nav {
+      background: #E0D9E1; /* 淡紫灰背景色 */
+      padding: 16px 0;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      /* 🔹 啟用水平滑動 */
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch; /* iOS 平滑滾動 */
+      /* 🔹 確保內容不被裁切 */
+      position: relative;
+    }
+
+    /* 🔹 隱藏滾動條 (保留滑動功能) */
+    nav::-webkit-scrollbar {
+      display: none;
+    }
+    
+    nav {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* 導航容器 */
+    .nav-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-width: none; /* 🔹 移除最大寬度限制 */
+      margin: 0 auto;
+      gap: 10px;
+      flex-wrap: nowrap; /* 🔹 禁止換行 */
+      padding: 0 20px; /* 🔹 左右內距 */
+      min-width: min-content; /* 🔹 確保容器足夠寬 */
+      /* 🔹 確保容器高度足夠 */
+      min-height: 44px;
+    }
+
+    /* 導航按鈕 - 膠囊風格 */
+    .nav-btn {
+      flex: 0 0 auto; /* 🔹 固定寬度,不壓縮 */
+      padding: 10px 22px;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: #999;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: visible; /* 🔹 改為 visible,確保內容不被裁切 */
+      white-space: nowrap; /* 🔹 文字不換行 */
+      min-width: fit-content; /* 🔹 最小寬度適應內容 */
+      /* 🔹 確保按鈕有足夠的高度 */
+      line-height: 1.4;
+    }
+
+    /* hover 效果 - 柔和灰底從中間往左右擴散 */
+    .nav-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%; /* 🔹 從中間開始 */
+      width: 0; /* 🔹 初始寬度為 0 */
+      height: 100%; /* 🔹 高度保持 100% */
+      background: rgba(46, 46, 46, 0.03);
+      transform: translateX(-50%); /* 🔹 置中對齊 */
+      transition: width 0.3s ease;
+      border-radius: 999px;
+      z-index: -1;
+    }
+
+    .nav-btn:hover::before {
+      width: 100%; /* 🔹 從中間往左右擴展到 100% */
+    }
+
+    .nav-btn:hover {
+      color: #92839D;
+      border-color: rgba(146,131,157,0.2);
+    }
+
+    /* 激活狀態 - 主題色邊框與文字 */
+    .nav-btn.active {
+      color: #92839D;
+      border-color: #92839D;
+      background: #F9F8FA;
+      font-weight: 500;
+    }
+
+    /* 🔹 滑動漸層提示 (手機版) - 調整位置避免遮擋 */
+    nav::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 20px; /* 🔹 縮小寬度 */
+      background: linear-gradient(to left, rgba(255, 255, 255, 0.95), transparent);
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    /* 響應式設計 - 手機版 */
+    @media (max-width: 768px) {
+      .nav-grid {
+        justify-content: flex-start; /* 🔹 手機版左對齊 */
+        gap: 8px;
+        padding: 0 16px; /* 手機版減少內距 */
+      }
+
+      .nav-btn {
+        padding: 9px 18px;
+        font-size: 0.8rem;
+      }
+
+      /* 🔹 顯示滑動提示 */
+      nav::after {
+        opacity: 0;
+      }
+    }
+
+    /* 平板與桌面版 - 居中顯示 */
+    @media (min-width: 769px) {
+      .nav-grid {
+        justify-content: center; /* 桌面版居中 */
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      
+      /* 🔹 桌面版不顯示滑動提示 */
+      nav::after {
+        opacity: 0;
+      }
+    }
+    /* ==================== 主要內容區 ==================== */
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* ==================== 區塊切換與動畫 ==================== */
+    .section {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    /* 淡入動畫 */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==================== 區塊標題樣式 ==================== */
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: #2E2E2E;
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #999;
+      margin-bottom: 40px;
+      letter-spacing: 1px;
+    }
+
+    /* ==================== 服務卡片 - 韓系風格 ==================== */
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    /* 單一服務卡片 */
+    .service-card {
+      background: #FFFFFF;
+      border: 1px solid #F0F0F0;
+      padding: 30px 24px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      /* 原角 */
+      border-radius: 20px;
+    }
+
+    /* 卡片頂部裝飾線 */
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #92839D;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    /* 卡片 hover 效果 */
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    }
+
+    /* 服務標籤 */
+    .service-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      color: #888;
+      border: 1px solid #E8E8E8;
+      padding: 4px 12px;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      /* 圓角 */
+      border-radius: 12px;
+    }
+
+    /* 服務名稱 */
+    .service-name {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #2E2E2E;
+      margin-bottom: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 服務描述 */
+    .service-desc {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* 服務詳情容器 (時間與價格) */
+    .service-detail {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid #F5F5F5;
+    }
+
+    .service-time {
+      font-size: 0.85rem;
+      color: #999;
+    }
+
+    .service-price {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #92839D;
+      letter-spacing: 0.5px;
+    }
+
+    /* 折扣標籤 */
+    .discount-badge {
+      display: inline-block;
+      background: #92839D;
+      color: white;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+      border-radius: 8px;
+    }
+
+    /* 預約按鈕 */
+    .book-btn {
+      width: 100%;
+      padding: 12px;
+      background: #92839D;
+      color: white;
+      border: none;
+      font-size: 0.85rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      margin-top: 16px;
+      border-radius: 10px;
+    }
+
+    /* 按鈕 hover 波紋效果 */
+    .book-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .book-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .book-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(146, 131, 157, 0.3);
+    }
+
+    .book-btn:active {
+      transform: translateY(0);
+    }
+
+   /* ==================== 熱門推薦區塊 ==================== */
+    .hot-picks {
+      background: #F8F8F8;
+      border: 1px solid #ECECEC;
+      padding: 24px 0; /* 🔹 上下padding,左右由內部控制 */
+      margin-bottom: 30px;
+      /* 🔹 熱門推薦區塊圓角 */
+      border-radius: 16px;
+      /* 🔹 啟用水平滑動 */
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* 🔹 隱藏滾動條 */
+    .hot-picks::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .hot-picks {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .hot-picks-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #2E2E2E;
+      margin-bottom: 16px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 0 24px; /* 🔹 標題左右padding */
+    }
+
+    .hot-picks-list {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap; /* 🔹 禁止換行 */
+      justify-content: center; /* 🔹 桌面版置中 */
+      padding: 0 24px; /* 🔹 左右padding */
+      min-width: min-content; /* 🔹 確保容器足夠寬 */
+    }
+
+    /* 熱門推薦按鈕 */
+    .hot-pick-btn {
+      flex: 0 0 auto; /* 🔹 固定寬度,不壓縮 */
+      padding: 10px 20px;
+      background: white;
+      border: 1px solid #E0E0E0;
+      font-size: 0.85rem;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+      position: relative;
+      overflow: hidden;
+      /* 🔹 熱門推薦按鈕圓角 - 藥丸形狀 */
+      border-radius: 20px;
+      white-space: nowrap; /* 🔹 文字不換行 */
+      min-width: fit-content; /* 🔹 最小寬度適應內容 */
+    }
+
+    /* 熱門按鈕 hover 圓形擴散效果 */
+    .hot-pick-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: #92839D;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.5s ease, height 0.5s ease;
+      z-index: 0;
+    }
+
+    .hot-pick-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    .hot-pick-btn span {
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease 0.1s;
+    }
+
+    .hot-pick-btn:hover span {
+      color: white;
+    }
+
+    /* 🔹 手機版調整 - 靠左對齊 */
+    @media (max-width: 768px) {
+      .hot-picks {
+        padding: 20px 0;
+      }
+
+      .hot-picks-title {
+        padding: 0 16px;
+        margin-bottom: 12px;
+      }
+
+      .hot-picks-list {
+        gap: 10px;
+        padding: 0 16px;
+        justify-content: center; /* 🔹 手機版置中 */
+      }
+
+      .hot-pick-btn {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* ==================== 作品集區塊 ==================== */
+    
+    /* 作品分類篩選按鈕 */
+    .portfolio-filters {
+      display: flex;
+      gap: 12px;
+      flex-wrap: nowrap; /* 🔹 禁止換行 */
+      justify-content: center; /* 🔹 桌面版置中 */
+      margin-bottom: 40px;
+      padding: 20px; /* 🔹 上下左右padding */
+      background: #F8F8F8;
+      border-radius: 16px;
+      /* 🔹 啟用水平滑動 - 限制在容器內 */
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      /* 🔹 防止整個頁面滑動 */
+      overscroll-behavior-x: contain;
+      touch-action: pan-x; /* 🔹 只允許水平滑動 */
+    }
+
+    /* 🔹 隱藏滾動條 */
+    .portfolio-filters::-webkit-scrollbar {
+      display: none;
+    }
+    
+    .portfolio-filters {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .filter-btn {
+      flex: 0 0 auto; /* 🔹 固定寬度,不壓縮 */
+      padding: 10px 24px;
+      background: white;
+      border: 1px solid #E0E0E0;
+      font-size: 0.85rem;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.5px;
+      font-family: 'Noto Sans TC', sans-serif;
+      /* 🔹 篩選按鈕圓角 */
+      border-radius: 20px;
+      white-space: nowrap; /* 🔹 文字不換行 */
+      min-width: fit-content; /* 🔹 最小寬度適應內容 */
+      /* 🔹 防止觸控事件穿透 */
+      pointer-events: auto;
+    }
+
+    .filter-btn:hover {
+      background: #92839D;
+      color: white;
+      border-color: #92839D;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(146, 131, 157, 0.2);
+    }
+
+    .filter-btn.active {
+      background: #92839D;
+      color: white;
+      border-color: #92839D;
+      font-weight: 500;
+    }
+
+    /* 🔹 手機版調整 - 靠左對齊 */
+    @media (max-width: 768px) {
+      .portfolio-filters {
+        gap: 10px;
+        padding: 16px;
+        margin-bottom: 30px;
+        justify-content: flex-start; /* 🔹 手機版靠左 */
+      }
+
+      .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+      }
+    }
+
+    /* 作品網格 */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    /* 單一作品項目 */
+    .portfolio-item {
+      position: relative;
+      overflow: hidden;
+      /* 🔹 作品項目圓角 */
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item.hide {
+      display: none;
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    /* 作品圖片容器 */
+    .portfolio-image {
+      position: relative;
+      width: 100%;
+      padding-bottom: 133.33%; /* 3:4 比例 */
+      overflow: hidden;
+      /* 🔹 圖片容器圓角 */
+      border-radius: 16px;
+    }
+
+    .portfolio-image img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-item:hover .portfolio-image img {
+      transform: scale(1.08);
+    }
+
+    /* 作品遮罩層 */
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, 
+        rgba(0,0,0,0) 0%, 
+        rgba(0,0,0,0.3) 50%,
+        rgba(0,0,0,0.8) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      /* 🔹 遮罩層圓角 */
+      border-radius: 16px;
+    }
+
+    .portfolio-item:hover .portfolio-overlay {
+      opacity: 1;
+    }
+
+    /* 作品資訊 */
+    .portfolio-info {
+      color: white;
+      transform: translateY(20px);
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.1s;
+    }
+
+    .portfolio-item:hover .portfolio-info {
+      transform: translateY(0);
+    }
+
+    .portfolio-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .portfolio-category {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* 響應式設計 - 平板 */
+    @media (min-width: 768px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* 響應式設計 - 桌面 */
+    @media (min-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    /* ==================== FAQ 常見問題區塊 ==================== */
+    .faq-category {
+      margin-bottom: 40px;
+    }
+
+    .faq-category-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #92839D;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #F0F0F0;
+      letter-spacing: 0.5px;
+    }
+
+    /* 單一 FAQ 項目 */
+    .faq-item {
+      background: white;
+      border: 1px solid #F0F0F0;
+      margin-bottom: 12px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* FAQ 問題區域 */
+    .faq-question {
+      padding: 20px 24px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+      color: #2E2E2E;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    /* FAQ 問題左側裝飾線 */
+    .faq-question::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: #92839D;
+      transform: scaleY(0);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-question:hover::before {
+      transform: scaleY(1);
+    }
+
+    .faq-question:hover {
+      background: #FAFAFA;
+      padding-left: 30px;
+    }
+
+    /* FAQ 圖標 (+ 號) */
+    .faq-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      color: #999;
+    }
+
+    /* FAQ 展開時圖標旋轉 */
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* FAQ 答案區域 */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s ease;
+      padding: 0 24px;
+      color: #666;
+      line-height: 1.8;
+      background: #FAFAFA;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      padding: 20px 24px;
+    }
+
+    /* ==================== 關於我們區塊 ==================== */
+    .about-content {
+      background: white;
+      border: 1px solid #F0F0F0;
+      padding: 40px 32px;
+      line-height: 2;
+      color: #555;
+    }
+
+    .about-content p {
+      margin-bottom: 24px;
+      letter-spacing: 0.3px;
+    }
+
+    /* 關於我們重點文字 */
+    .about-highlight {
+      color: #92839D;
+      font-weight: 500;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about-highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: #92839D;
+    }
+
+    /* ==================== 聯絡我們區塊 ==================== */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    /* 平板以上雙欄顯示 */
+    @media (min-width: 768px) {
+      .contact-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    /* ==================== 聯絡資訊區塊 ==================== */
+    .contact-info {
+      background: white;
+      border: 1px solid #F0F0F0;
+      padding: 32px 28px;
+    }
+
+    .contact-info-title {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: #92839D;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    /* 單一聯絡項目 */
+    .contact-item {
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #F5F5F5;
+    }
+
+    .contact-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .contact-label {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .contact-value {
+      font-size: 1rem;
+      color: #2E2E2E;
+      letter-spacing: 0.3px;
+    }
+
+    .contact-value a {
+      color: #2E2E2E;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-value a:hover {
+      color: #666;
+    }
+
+    /* ==================== 聯絡表單 ==================== */
+    .contact-form {
+      background: white;
+      border: 1px solid #F0F0F0;
+      padding: 32px 28px;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 10px;
+      color: #2E2E2E;
+      font-weight: 400;
+      font-size: 0.9rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* 表單輸入欄位 */
+    .form-input,
+    .form-textarea,
+    .form-select {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1px solid #E8E8E8;
+      border-radius: 0;
+      font-size: 0.95rem;
+      font-family: 'Noto Sans TC', sans-serif;
+      transition: all 0.3s ease;
+      background: #FAFAFA;
+    }
+
+    /* 下拉選單自訂樣式 */
+    .form-select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 6L11 1' stroke='%2392839D' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+
+    /* 表單輸入欄位 focus 狀態 */
+    .form-input:focus,
+    .form-textarea:focus,
+    .form-select:focus {
+      outline: none;
+      border-color: #92839D;
+      background: white;
+      box-shadow: 0 0 0 1px #92839D;
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* 表單提交按鈕 */
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #92839D;
+      color: white;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* 提交按鈕 hover 波紋效果 */
+    .submit-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s ease, height 0.6s ease;
+    }
+
+    .submit-btn:hover::before {
+      width: 400px;
+      height: 400px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    /* ==================== 成功訊息 ==================== */
+    .success-message {
+      display: none;
+      background: #F8F8F8;
+      border: 1px solid #E8E8E8;
+      padding: 20px;
+      text-align: center;
+      color: #2E2E2E;
+      margin-top: 20px;
+      animation: slideDown 0.4s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+  
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com" type="text/javascript"></script>
+</head>
+
+<body>
+  <div class="app-wrapper">
+    
+    <!-- ==================== HEADER 區塊 ==================== -->
+    <header>
+      <img src="images/logo.png" alt="Hanna 形象美學工作室" class="main-logo" id="main-title">
+      <p class="subtitle" id="subtitle">Your Personal Beauty Curator</p>
+      <div class="divider"></div>
+    </header>
+
+    <!-- ==================== 促銷橫幅 ==================== -->
+    <div class="promo-banner" id="promo-banner">
+      本月預約骨骼診斷享9折優惠 · 限時至本月底
+    </div> 
+    
+    <!-- ==================== 導航列 ==================== -->
+    <nav>
+      <div class="nav-grid">
+        <button class="nav-btn active" data-section="services">服務方案</button>
+        <button class="nav-btn" data-section="portfolio">作品集</button>
+        <button class="nav-btn" data-section="faq">常見問題</button>
+        <button class="nav-btn" data-section="about">關於 Hanna</button>
+        <button class="nav-btn" data-section="contact">聯絡我們</button>
+      </div>
+    </nav>
+    
+    <!-- ==================== 主要內容區 ==================== -->
+    <main>
+      
+      <!-- ==================== 服務方案區塊 ==================== -->
+      <section id="services" class="section active">
+        <h2 class="section-title">服務方案</h2>
+        <p class="section-subtitle">Professional Beauty Services</p>
+        
+        <!-- 熱門推薦 -->
+        <div class="hot-picks">
+          <div class="hot-picks-title">✦ 熱門推薦 Hot Picks</div>
+          <div class="hot-picks-list">
+            <button class="hot-pick-btn" data-service="combo"><span>綜合方案</span></button>
+            <button class="hot-pick-btn" data-service="bone"><span>骨骼診斷</span></button>
+            <button class="hot-pick-btn" data-service="color"><span>色彩診斷</span></button>
+          </div>
+        </div>
+        
+        <!-- 服務卡片網格 -->
+        <div class="service-grid">
+          
+          <!-- 色彩診斷 -->
+          <div class="service-card" data-service-id="color">
+            <div class="service-badge">Color Analysis</div>
+            <div class="service-name">色彩診斷</div>
+            <div class="service-desc">專業色彩顧問為您找出最適合的個人色系,讓妝容與穿搭更加分</div>
+            <div class="service-detail">
+              <div class="service-time">約 90 分鐘</div>
+              <div class="service-price">NT$ 3,500</div>
+            </div>
+            <button class="book-btn" onclick="goToBooking('色彩診斷')">立即預約</button>
+          </div>
+          
+          <!-- 骨骼診斷 -->
+          <div class="service-card" data-service-id="bone">
+            <div class="service-badge">Bone Structure</div>
+            <div class="service-name">骨骼診斷 <span class="discount-badge">9折</span></div>
+            <div class="service-desc">分析臉型與身型比例,提供最適合的髮型、妝容與穿搭建議</div>
+            <div class="service-detail">
+              <div class="service-time">約 90 分鐘</div>
+              <div class="service-price">
+                NT$ 3,150 
+                <span style="text-decoration: line-through; font-size: 0.85rem; color: #999; margin-left: 6px;">3,500</span>
+              </div>
+            </div>
+            <button class="book-btn" onclick="goToBooking('骨骼診斷')">立即預約</button>
+          </div>
+          
+          <!-- 彩妝教學 -->
+          <div class="service-card" data-service-id="teaching">
+            <div class="service-badge">Makeup Lesson</div>
+            <div class="service-name">彩妝教學</div>
+            <div class="service-desc">一對一客製化教學,學習適合自己的彩妝技巧與產品挑選</div>
+            <div class="service-detail">
+              <div class="service-time">約 120 分鐘</div>
+              <div class="service-price">NT$ 4,000</div>
+            </div>
+            <button class="book-btn" onclick="goToBooking('彩妝教學')">立即預約</button>
+          </div>
+          
+          <!-- 全臉彩妝服務 -->
+          <div class="service-card" data-service-id="makeup">
+            <div class="service-badge">Full Makeup</div>
+            <div class="service-name">全臉彩妝服務</div>
+            <div class="service-desc">適合重要場合,提供完整彩妝造型服務,讓您展現最佳狀態</div>
+            <div class="service-detail">
+              <div class="service-time">約 60 分鐘</div>
+              <div class="service-price">NT$ 2,500</div>
+            </div>
+            <button class="book-btn" onclick="goToBooking('全臉彩妝服務')">立即預約</button>
+          </div>
+          
+          <!-- 綜合方案 -->
+          <div class="service-card" data-service-id="combo">
+            <div class="service-badge">Combo Package</div>
+            <div class="service-name">綜合方案</div>
+            <div class="service-desc">色彩診斷 + 骨骼診斷完整套組,全方位了解最適合自己的風格定位</div>
+            <div class="service-detail">
+              <div class="service-time">約 180 分鐘</div>
+              <div class="service-price">
+                NT$ 6,000 
+                <span style="text-decoration: line-through; font-size: 0.85rem; color: #999; margin-left: 6px;">7,000</span>
+              </div>
+            </div>
+            <button class="book-btn" onclick="goToBooking('綜合方案')">立即預約</button>
+          </div>
+          
+        </div>
+      </section>
+
+    <!-- ==================== 作品集區塊 ==================== -->
+      <section id="portfolio" class="section">
+        <h2 class="section-title">作品集</h2>
+        <p class="section-subtitle">Portfolio Gallery</p>
+        
+        <!-- 作品分類篩選 -->
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">全部作品</button>
+          <button class="filter-btn" data-filter="color">色彩診斷</button>
+          <button class="filter-btn" data-filter="bone">骨骼診斷</button>
+          <button class="filter-btn" data-filter="makeup">彩妝造型</button>
+          <button class="filter-btn" data-filter="teaching">彩妝教學</button>
+        </div>
+        
+        <!-- 作品網格 -->
+        <div class="portfolio-grid">
+          
+          <!-- 色彩診斷作品 -->
+          <div class="portfolio-item" data-category="color">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&h=800&fit=crop" alt="色彩診斷作品 1">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">春季暖色調診斷</h3>
+                  <p class="portfolio-category">色彩診斷</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="color">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop" alt="色彩診斷作品 2">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">冬季冷色調診斷</h3>
+                  <p class="portfolio-category">色彩診斷</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="color">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=600&h=800&fit=crop" alt="色彩診斷作品 3">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">秋季暖色調分析</h3>
+                  <p class="portfolio-category">色彩診斷</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 骨骼診斷作品 -->
+          <div class="portfolio-item" data-category="bone">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=600&h=800&fit=crop" alt="骨骼診斷作品 1">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">臉型輪廓分析</h3>
+                  <p class="portfolio-category">骨骼診斷</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="bone">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&h=800&fit=crop" alt="骨骼診斷作品 2">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">身型比例診斷</h3>
+                  <p class="portfolio-category">骨骼診斷</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 彩妝造型作品 -->
+          <div class="portfolio-item" data-category="makeup">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=600&h=800&fit=crop" alt="彩妝造型作品 1">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">韓系清透妝容</h3>
+                  <p class="portfolio-category">彩妝造型</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="makeup">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=600&h=800&fit=crop" alt="彩妝造型作品 2">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">宴會精緻妝容</h3>
+                  <p class="portfolio-category">彩妝造型</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="makeup">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&h=800&fit=crop" alt="彩妝造型作品 3">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">日常自然妝容</h3>
+                  <p class="portfolio-category">彩妝造型</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="makeup">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=600&h=800&fit=crop" alt="彩妝造型作品 4">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">歐美輪廓妝容</h3>
+                  <p class="portfolio-category">彩妝造型</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 彩妝教學作品 -->
+          <div class="portfolio-item" data-category="teaching">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=800&fit=crop" alt="彩妝教學作品 1">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">眼妝技巧教學</h3>
+                  <p class="portfolio-category">彩妝教學</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="teaching">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=600&h=800&fit=crop" alt="彩妝教學作品 2">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">底妝教學課程</h3>
+                  <p class="portfolio-category">彩妝教學</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-item" data-category="teaching">
+            <div class="portfolio-image">
+              <img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=600&h=800&fit=crop" alt="彩妝教學作品 3">
+              <div class="portfolio-overlay">
+                <div class="portfolio-info">
+                  <h3 class="portfolio-title">修容技巧指導</h3>
+                  <p class="portfolio-category">彩妝教學</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      
+      <!-- ==================== FAQ 常見問題區塊 ==================== -->
+      <section id="faq" class="section">
+        <h2 class="section-title">常見問題</h2>
+        <p class="section-subtitle">Frequently Asked Questions</p>
+        
+        <!-- FAQ 分類: 預約流程說明 -->
+        <div class="faq-category">
+          <div class="faq-category-title">預約流程說明</div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>如何進行預約?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              您可以透過 Instagram 私訊、電話或填寫下方聯絡表單進行預約。我們會在 24 小時內回覆確認您的預約時間。建議提前 3-7 天預約以確保有合適的時段。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>可以取消或更改預約嗎?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              若需取消或更改預約,請於預約時間 24 小時前告知。臨時取消可能會酌收取消費用,敬請見諒。
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ 分類: 各項服務差異 -->
+        <div class="faq-category">
+          <div class="faq-category-title">各項服務差異</div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>色彩診斷與骨骼診斷有什麼不同?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              色彩診斷主要分析適合您的色系與色調,幫助您在彩妝與穿搭選色上更得心應手。骨骼診斷則是分析臉型與身型比例,提供髮型、妝容輪廓與服裝版型的建議。兩者結合能讓整體形象更加協調。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>彩妝教學與全臉彩妝服務的差別?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              彩妝教學是由您親自動手,老師在旁指導技巧與產品使用,目的是讓您學會自己化妝。全臉彩妝服務則是由彩妝師為您完成整體妝容,適合重要場合或不擅長化妝的客人。
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ 分類: 上課需準備什麼 -->
+        <div class="faq-category">
+          <div class="faq-category-title">上課需準備什麼?</div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>參加色彩或骨骼診斷需要準備什麼?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              建議素顏或淡妝前來,穿著簡單的衣服(避免過於鮮豔的顏色),並攜帶您平時使用的彩妝品。我們會提供診斷所需的工具與色布。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>彩妝教學需要自備彩妝品嗎?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              建議攜帶您目前使用的彩妝品,這樣老師能更了解您的使用習慣並給予建議。工作室也有提供專業彩妝品供教學使用。
+            </div>
+          </div>
+        </div>
+        
+        <!-- FAQ 分類: 工作室位置 & 注意事項 -->
+        <div class="faq-category">
+          <div class="faq-category-title">工作室位置 &amp; 注意事項</div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>工作室在哪裡?交通方便嗎?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              工作室位於台北市信義區,鄰近捷運站步行約 5 分鐘。詳細地址會在預約確認後提供給您。附近有付費停車場,交通十分便利。
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <div class="faq-question">
+              <span>可以帶朋友一起來嗎?</span>
+              <span class="faq-icon">+</span>
+            </div>
+            <div class="faq-answer">
+              為確保服務品質與隱私,建議一對一進行。若有特殊需求(如雙人診斷或閨蜜同行),請在預約時事先告知,我們會盡力安排。
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <!-- ==================== 關於 Hanna 區塊 ==================== -->
+      <section id="about" class="section">
+        <h2 class="section-title">關於 Hanna</h2>
+        <p class="section-subtitle">About Me</p>
+        
+        <div class="about-content">
+          <p>嗨,我是 Hanna,一位專注於<span class="about-highlight">個人形象美學</span>的彩妝師與形象顧問。</p>
+          
+          <p>從事美妝產業超過 8 年,我深信每個人都有屬於自己的獨特美感。透過專業的色彩診斷、骨骼分析與彩妝技巧,我致力於幫助每位客人找到最適合自己的風格,而不是追隨潮流。</p>
+          
+          <p>我的服務理念是:<span class="about-highlight">美,應該是舒適自在的</span>。無論是日常妝容或重要場合,我都希望能讓您在展現美麗的同時,也能感受到最真實的自己。</p>
+          
+          <p>工作室採預約制,提供安靜私密的空間,讓我們能夠專注在您的需求上,一起探索屬於您的美學風格。</p>
+          
+          <p style="margin-top: 32px; text-align: center; color: #999; font-size: 0.9rem; font-style: italic;">
+            "Beauty begins the moment you decide to be yourself."
+          </p>
+        </div>
+      </section>
+      
+      <!-- ==================== 聯絡我們區塊 ==================== -->
+      <section id="contact" class="section">
+        <h2 class="section-title">聯絡我們</h2>
+        <p class="section-subtitle">Get In Touch</p>
+        
+        <div class="contact-container">
+          
+          <!-- 聯絡資訊 -->
+          <div class="contact-info">
+            <div class="contact-info-title">聯絡資訊</div>
+            
+            <div class="contact-item">
+              <div class="contact-label">Address</div>
+              <div class="contact-value" id="studio-address">
+                台北市信義區信義路五段 100 號 3 樓
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">
+                <a href="tel:0212345678" id="studio-phone">02-1234-5678</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-label">Instagram</div>
+              <div class="contact-value">
+                <a href="https://instagram.com/hanna_beauty" target="_blank" rel="noopener noreferrer" id="studio-ig">
+                  @hanna_beauty
+                </a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-label">Business Hours</div>
+              <div class="contact-value">
+                週二至週日 10:00 - 19:00<br>
+                週一公休<br>
+                <span style="color: #92839D; font-weight: 500;">※ 採預約制</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 聯絡表單 -->
+          <div class="contact-form">
+            <form id="contact-form">
+              
+              <div class="form-group">
+                <label class="form-label" for="name">姓名</label>
+                <input type="text" id="name" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="phone">聯絡電話</label>
+                <input type="tel" id="phone" class="form-input" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="service">需求服務</label>
+                <select id="service" class="form-select" required>
+                  <option value="">請選擇服務項目</option>
+                  <option value="色彩診斷">色彩診斷</option>
+                  <option value="骨骼診斷">骨骼診斷(本月9折)</option>
+                  <option value="彩妝教學">彩妝教學</option>
+                  <option value="全臉彩妝服務">全臉彩妝服務</option>
+                  <option value="綜合方案">綜合方案(色彩+骨骼)</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="instagram">Instagram 帳號</label>
+                <input type="text" id="instagram" class="form-input" placeholder="@your_instagram" required>
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="message">備註說明</label>
+                <textarea id="message" class="form-textarea" placeholder="請描述您的需求或問題"></textarea>
+              </div>
+              
+              <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            
+            <div class="success-message" id="success-message">
+              ✓ 訊息已送出!我們會盡快與您聯繫
+            </div>
+          </div>
+          
+        </div>
+      </section>
+      
+    </main>
+  </div>
+  
+   <!-- ==================== JavaScript 程式碼 ==================== -->
+  <script>
+    // ==================== 預設配置設定 ====================
+    const defaultConfig = {
+      background_color: "#E0D9E1",
+      surface_color: "#FFFFFF",
+      text_color: "#2E2E2E",
+      primary_action_color: "#92839D",
+      secondary_action_color: "#666666",
+      main_title: "Hanna",
+      subtitle: "Your Personal Beauty Curator",
+      promo_text: "本月預約骨骼診斷享9折優惠 · 限時至本月底",
+      studio_intro: "Hanna 形象美學工作室成立於 2020 年,致力於提供最專業、最貼心的美妝造型服務。",
+      address: "台北市信義區信義路五段 100 號 3 樓",
+      ig_account: "@hanna_beauty",
+      phone_number: "02-1234-5678",
+      font_family: "Noto Sans TC",
+      font_size: 16
+    };
+
+    const config = window.elementSdk ? { ...defaultConfig } : defaultConfig;
+
+    // ==================== 配置變更處理函式 ====================
+    async function onConfigChange(cfg) {
+      // 字體與顏色設定
+      const baseSize = cfg.font_size || defaultConfig.font_size;
+      const customFont = cfg.font_family || defaultConfig.font_family;
+      const baseFontStack = 'sans-serif';
+      const bgColor = cfg.background_color || defaultConfig.background_color;
+      const surfaceColor = cfg.surface_color || defaultConfig.surface_color;
+      const textColor = cfg.text_color || defaultConfig.text_color;
+      const primaryColor = cfg.primary_action_color || defaultConfig.primary_action_color;
+      const secondaryColor = cfg.secondary_action_color || defaultConfig.secondary_action_color;
+
+      // 套用全域樣式
+      document.body.style.fontFamily = `${customFont}, ${baseFontStack}`;
+      document.body.style.fontSize = `${baseSize}px`;
+      document.body.style.background = bgColor;
+      document.body.style.color = textColor;
+      document.querySelector('.app-wrapper').style.background = bgColor;
+
+      // 更新主標題
+      const mainTitle = document.getElementById('main-title');
+      mainTitle.textContent = cfg.main_title || defaultConfig.main_title;
+      mainTitle.style.fontSize = `${baseSize * 2.2}px`;
+      mainTitle.style.color = primaryColor;
+
+      // 更新副標題
+      const subtitle = document.getElementById('subtitle');
+      subtitle.textContent = cfg.subtitle || defaultConfig.subtitle;
+      subtitle.style.fontSize = `${baseSize * 0.85}px`;
+
+      // 更新促銷橫幅
+      const promoBanner = document.getElementById('promo-banner');
+      promoBanner.textContent = cfg.promo_text || defaultConfig.promo_text;
+      promoBanner.style.fontSize = `${baseSize * 0.9}px`;
+
+      // 更新聯絡資訊
+      document.getElementById('studio-address').textContent = cfg.address || defaultConfig.address;
+      
+      const igLink = document.getElementById('studio-ig');
+      igLink.textContent = cfg.ig_account || defaultConfig.ig_account;
+      igLink.href = `https://instagram.com/${(cfg.ig_account || defaultConfig.ig_account).replace('@', '')}`;
+      
+      const phoneLink = document.getElementById('studio-phone');
+      phoneLink.textContent = cfg.phone_number || defaultConfig.phone_number;
+      phoneLink.href = `tel:${(cfg.phone_number || defaultConfig.phone_number).replace(/[^0-9]/g, '')}`;
+
+      // 更新導航按鈕樣式
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.style.fontSize = `${baseSize * 0.85}px`;
+        btn.style.color = secondaryColor;
+        if (btn.classList.contains('active')) {
+          btn.style.color = primaryColor;
+          btn.style.borderBottomColor = primaryColor;
+        }
+      });
+
+      // 更新區塊標題樣式
+      document.querySelectorAll('.section-title').forEach(title => {
+        title.style.fontSize = `${baseSize * 1.8}px`;
+        title.style.color = primaryColor;
+      });
+
+      // 更新服務卡片背景
+      document.querySelectorAll('.service-card').forEach(card => {
+        card.style.background = surfaceColor;
+      });
+
+      // 更新按鈕顏色
+      document.querySelectorAll('.submit-btn').forEach(btn => {
+        btn.style.background = primaryColor;
+        btn.style.fontSize = `${baseSize * 0.9}px`;
+      });
+
+      document.querySelectorAll('.discount-badge').forEach(badge => {
+        badge.style.background = primaryColor;
+      });
+    }
+
+    // ==================== Element SDK 初始化 ====================
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (value) => {
+                cfg.background_color = value;
+                window.elementSdk.setConfig({ background_color: value });
+              }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (value) => {
+                cfg.surface_color = value;
+                window.elementSdk.setConfig({ surface_color: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.primary_action_color || defaultConfig.primary_action_color,
+              set: (value) => {
+                cfg.primary_action_color = value;
+                window.elementSdk.setConfig({ primary_action_color: value });
+              }
+            },
+            {
+              get: () => cfg.secondary_action_color || defaultConfig.secondary_action_color,
+              set: (value) => {
+                cfg.secondary_action_color = value;
+                window.elementSdk.setConfig({ secondary_action_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => cfg.font_family || defaultConfig.font_family,
+            set: (value) => {
+              cfg.font_family = value;
+              window.elementSdk.setConfig({ font_family: value });
+            }
+          },
+          fontSizeable: {
+            get: () => cfg.font_size || defaultConfig.font_size,
+            set: (value) => {
+              cfg.font_size = value;
+              window.elementSdk.setConfig({ font_size: value });
+            }
+          }
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['main_title', cfg.main_title || defaultConfig.main_title],
+          ['subtitle', cfg.subtitle || defaultConfig.subtitle],
+          ['promo_text', cfg.promo_text || defaultConfig.promo_text],
+          ['studio_intro', cfg.studio_intro || defaultConfig.studio_intro],
+          ['address', cfg.address || defaultConfig.address],
+          ['ig_account', cfg.ig_account || defaultConfig.ig_account],
+          ['phone_number', cfg.phone_number || defaultConfig.phone_number]
+        ])
+      });
+    }
+
+    // 初始化配置
+    onConfigChange(config);
+
+    // ==================== 預約跳轉功能 ====================
+    function goToBooking(serviceName) {
+      // 切換到聯絡我們區塊
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        b.classList.remove('active');
+        b.style.color = config.secondary_action_color || defaultConfig.secondary_action_color;
+        b.style.borderBottomColor = 'transparent';
+      });
+      
+      const contactBtn = document.querySelector('[data-section="contact"]');
+      contactBtn.classList.add('active');
+      contactBtn.style.color = config.primary_action_color || defaultConfig.primary_action_color;
+      contactBtn.style.borderBottomColor = config.primary_action_color || defaultConfig.primary_action_color;
+      
+      document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+      document.getElementById('contact').classList.add('active');
+      
+      // 設定服務項目並滾動到表單
+      setTimeout(() => {
+        document.getElementById('service').value = serviceName;
+        document.getElementById('service').focus();
+        
+        // 平滑滾動到表單
+        document.getElementById('contact-form').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 100);
+    }
+
+    // ==================== 導航功能 ====================
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const section = btn.dataset.section;
+        
+        // 移除所有 active 狀態
+        document.querySelectorAll('.nav-btn').forEach(b => {
+          b.classList.remove('active');
+          b.style.color = config.secondary_action_color || defaultConfig.secondary_action_color;
+          b.style.borderBottomColor = 'transparent';
+        });
+        
+        // 設定當前按鈕為 active
+        btn.classList.add('active');
+        btn.style.color = config.primary_action_color || defaultConfig.primary_action_color;
+        btn.style.borderBottomColor = config.primary_action_color || defaultConfig.primary_action_color;
+        
+        // 顯示對應的區塊
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.getElementById(section).classList.add('active');
+      });
+    });
+
+    // ==================== 熱門推薦平滑滾動 ====================
+    document.querySelectorAll('.hot-pick-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const serviceId = btn.dataset.service;
+        const serviceCard = document.querySelector(`[data-service-id="${serviceId}"]`);
+        if (serviceCard) {
+          // 滾動到服務卡片
+          serviceCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          // 添加縮放動畫效果
+          serviceCard.style.transform = 'scale(1.02)';
+          setTimeout(() => {
+            serviceCard.style.transform = 'scale(1)';
+          }, 300);
+        }
+      });
+    });
+
+    // ==================== FAQ 手風琴效果 ====================
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const faqItem = question.parentElement;
+        const isActive = faqItem.classList.contains('active');
+        
+        // 關閉所有 FAQ 項目
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // 如果當前項目不是 active,則打開它
+        if (!isActive) {
+          faqItem.classList.add('active');
+        }
+      });
+    });
+
+    // ==================== 作品集篩選功能 ====================
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.dataset.filter;
+        
+        // 更新按鈕激活狀態
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.remove('active');
+        });
+        btn.classList.add('active');
+        
+        // 篩選作品項目
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          if (filter === 'all') {
+            item.classList.remove('hide');
+            // 添加淡入動畫
+            item.style.animation = 'fadeIn 0.5s ease';
+          } else {
+            if (item.dataset.category === filter) {
+              item.classList.remove('hide');
+              item.style.animation = 'fadeIn 0.5s ease';
+            } else {
+              item.classList.add('hide');
+            }
+          }
+        });
+      });
+    });
+
+    // ==================== 表單提交處理 ====================
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const submitBtn = e.target.querySelector('.submit-btn');
+      const originalText = submitBtn.textContent;
+      const successMessage = document.getElementById('success-message');
+      
+      // 顯示發送中狀態
+      submitBtn.textContent = 'Sending...';
+      submitBtn.disabled = true;
+      
+      // 模擬發送過程
+      setTimeout(() => {
+        // 重置表單
+        e.target.reset();
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // 顯示成功訊息
+        successMessage.classList.add('show');
+        
+        // 4 秒後隱藏成功訊息
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 4000);
+      }, 1000);
+    });
+  </script>
+  
+  <!-- Cloudflare 腳本 -->
+  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9a8a15b0c4ea4a9d',t:'MTc2NDgzODUyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
