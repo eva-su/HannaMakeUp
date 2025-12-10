@@ -64,10 +64,9 @@
       font-family: 'Cormorant Garamond', serif; /* 使用襯線字體 */
       font-size: 2.2rem;
       font-weight: 300;
-      color: #92839D;
+      color: #2E2E2E;
       margin-bottom: 16px;
       letter-spacing: 3px; /* 字距加寬 */
-      text-align: center;
     }
 
     /* 🔹 Logo 圖片樣式 - 改為小圖示 */
@@ -89,7 +88,7 @@
       font-weight: 300;
       color: #92839D;
       margin-bottom: 16px;
-      letter-spacing: 4px; /* 🔹 字距加寬 */
+      letter-spacing: 5px; /* 🔹 字距加寬 */
       text-align: center;
       animation: titleFadeIn 1s ease-in-out 0.2s both; /* 🔹 延遲淡入 */
     }
@@ -127,16 +126,17 @@
 
       .main-title-text {
         font-size: 1.8rem; /* 🔹 手機版標題縮小 */
-        letter-spacing: 3px;
+        letter-spacing: 12px; /* 🔹 增加字距讓總長度跟副標題一樣 */
       }
 
       /* 🔹 手機版副標題 */
       .subtitle {
-        font-size: 0.6rem; /* 🔹 手機版更小 */
-        letter-spacing: 0.6px; /* 🔹 手機版字距更小 */
-        max-width: 280px;
-        transform: scaleX(0.70); /* 🔹 水平壓縮 35% */
-    }
+        font-size: 0.65rem; /* 🔹 手機版更小 */
+        letter-spacing: 0.3px; /* 🔹 手機版字距更小 */
+        max-width: 320px; /* 🔹 增加最大寬度 */
+        transform: scaleX(0.95); /* 🔹 水平壓縮 5% */
+      }
+      }
 
     /* 副標題 */
     .subtitle {
