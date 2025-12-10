@@ -69,18 +69,40 @@
       letter-spacing: 3px; /* 字距加寬 */
     }
 
-    /* 🔹 Logo 圖片樣式 */
+    /* 🔹 Logo 圖片樣式 - 改為小圖示 */
     .main-logo {
-      max-width: 200px; /* 🔹 最大寬度 200px,可調整 */
-      height: auto; /* 🔹 高度自動,保持比例 */
-      margin-bottom: 8px;
+      max-width: 80px; /* 🔹 改為 80px,小巧的 logo */
+      height: auto;
+      margin-bottom: 12px; /* 🔹 Logo 和標題間距 */
       display: block;
       margin-left: auto;
       margin-right: auto;
       /* 🔹 淡入動畫 */
       animation: logoFadeIn 1s ease-in-out;
-      /* 🔹 如果 logo 太小,可以調整 */
-      /* max-width: 300px; */
+    }
+
+    /* 🔹 主標題文字 "Hanna Beauty" */
+    .main-title-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem; /* 🔹 大標題 */
+      font-weight: 300;
+      color: #2E2E2E;
+      margin-bottom: 16px;
+      letter-spacing: 4px; /* 🔹 字距加寬 */
+      text-align: center;
+      animation: titleFadeIn 1s ease-in-out 0.2s both; /* 🔹 延遲淡入 */
+    }
+
+    /* 🔹 標題淡入動畫 */
+    @keyframes titleFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* 🔹 Logo 淡入動畫 */
@@ -98,7 +120,13 @@
     /* 🔹 手機版 Logo 調整 */
     @media (max-width: 768px) {
       .main-logo {
-        max-width: 150px; /* 手機版稍微小一點 */
+        max-width: 60px; /* 🔹 手機版更小 */
+        margin-bottom: 10px;
+      }
+
+      .main-title-text {
+        font-size: 1.8rem; /* 🔹 手機版標題縮小 */
+        letter-spacing: 3px;
       }
     }
 
@@ -1119,6 +1147,7 @@
     <!-- ==================== HEADER 區塊 ==================== -->
     <header>
       <img src="images/logo.png" alt="Hanna 形象美學工作室" class="main-logo" id="main-title">
+      <h1 class="main-title-text">Hanna Beauty</h1>
       <p class="subtitle" id="subtitle">Your Personal Beauty Curator</p>
       <div class="divider"></div>
     </header>
