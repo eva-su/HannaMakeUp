@@ -129,26 +129,17 @@
         letter-spacing: 5px; /* 🔹 增加字距讓總長度跟副標題一樣 */
       }
 
-      /* 🔹 手機版副標題 */
-      .subtitle {
-        font-size: 0.1rem; /* 🔹 縮小字體 */
-        letter-spacing: 0.1px; /* 🔹 負字距,讓字母更緊密 */
-        max-width: 220px;
-        transform: scaleX(0.3); /* 🔹 水平壓縮 40% */
-      }
-    }
-
-
-    /* 副標題 */
+      /* 副標題 - 桌面版 */
     .subtitle {
       font-size: 0.7rem; /* 🔹 縮小字體 (原本 0.85rem) */
       color: #888;
       font-weight: 300;
       margin-bottom: 24px;
-      letter-spacing: 2px; /* 🔹 減少字距 (原本 2px) 讓長度變短 */
+      letter-spacing: 0.5px; /* 🔹 減少字距 (原本 2px) 讓長度變短 */
       text-transform: uppercase; /* 英文大寫 */
       /* 🔹 置中對齊 */
       text-align: center; /* 🔹 文字置中 */
+      /* 🔹 限制寬度,比主標題更短 */
       max-width: 320px; /* 🔹 縮小到 320px */
       margin-left: auto; /* 🔹 容器置中 */
       margin-right: auto;
@@ -156,9 +147,29 @@
       /* 🔹 禁止換行 */
       white-space: nowrap;
       /* 🔹 水平縮放讓文字更緊湊 */
-      transform: scaleX(0.98); /* 🔹 水平壓縮 2% */
+      transform: scaleX(0.95); /* 🔹 水平壓縮 5% */
     }
 
+    /* 🔹 手機版 Logo 和標題調整 */
+    @media (max-width: 768px) {
+      .main-logo {
+        max-width: 60px; /* 🔹 手機版更小 */
+        margin-bottom: 10px;
+      }
+
+      .main-title-text {
+        font-size: 1.8rem; /* 🔹 手機版標題縮小 */
+        letter-spacing: 12px; /* 🔹 增加字距讓總長度跟副標題一樣 */
+      }
+
+      /* 🔹 手機版副標題 - 覆蓋桌面版設定 */
+      .subtitle {
+        font-size: 0.5rem !important; /* 🔹 縮小字體 */
+        letter-spacing: -0.3px !important; /* 🔹 負字距,讓字母更緊密 */
+        max-width: 280px !important;
+        transform: scaleX(0.6) !important; /* 🔹 水平壓縮 40% */
+      }
+    }
     /* 分隔線 */
     .divider {
       width: 40px;
