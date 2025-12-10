@@ -52,11 +52,13 @@
     }
 
     /* ==================== Header 區塊 - 韓系極簡風格 ==================== */
-    header {
-      background: #E0D9E1;
+        header {
+      background: #FFFFFF;
       padding: 60px 20px 40px;
       text-align: center;
       border-bottom: 1px solid #F0F0F0;
+      /* 🔹 Header 底部圓角 */
+      border-radius: 0 0 24px 24px;
     }
 
     /* 主標題 */
@@ -86,10 +88,10 @@
       font-family: 'Cormorant Garamond', serif;
       font-size: 2.5rem; /* 🔹 大標題 */
       font-weight: 300;
-      color: #92839D;
+      color: #6B6B6B; /* 🔹 改為深灰色,跟原設計一致 */
       margin-bottom: 16px;
-      letter-spacing: 5px; /* 🔹 字距加寬 */
-      text-align: center;
+      letter-spacing: 12px; /* 🔹 增加字距讓總長度跟副標題一樣 */
+      text-align: center; /* 🔹 置中對齊 */
       animation: titleFadeIn 1s ease-in-out 0.2s both; /* 🔹 延遲淡入 */
     }
 
@@ -117,19 +119,7 @@
       }
     }
 
-    /* 🔹 手機版 Logo 調整 */
-    @media (max-width: 768px) {
-      .main-logo {
-        max-width: 60px; /* 🔹 手機版更小 */
-        margin-bottom: 10px;
-      }
-
-      .main-title-text {
-        font-size: 1.9rem; /* 🔹 手機版標題縮小 */
-        letter-spacing: 5px; /* 🔹 增加字距讓總長度跟副標題一樣 */
-      }
-
-      /* 副標題 - 桌面版 */
+    /* 副標題 - 桌面版 */
     .subtitle {
       font-size: 0.7rem; /* 🔹 縮小字體 (原本 0.85rem) */
       color: #888;
@@ -170,12 +160,15 @@
         transform: scaleX(0.6) !important; /* 🔹 水平壓縮 40% */
       }
     }
+
     /* 分隔線 */
     .divider {
       width: 40px;
       height: 1px;
       background: #2E2E2E;
       margin: 0 auto;
+      /* 🔹 分隔線也可以圓角 */
+      border-radius: 2px;
     }
 
     /* ==================== 促銷橫幅 ==================== */
