@@ -134,7 +134,7 @@
     .subtitle {
       font-size: 0.85rem;
       color: #888;
-      font-weight: 300;
+      font-weight: 200;
       margin-bottom: 6px;
       letter-spacing: 2px;
       text-transform: uppercase; /* 英文大寫 */
@@ -149,8 +149,8 @@
     }
 
     /* ==================== 促銷橫幅 ==================== */
-    .promo-banner {
-      background: #E0D9E1; /* 淡紫灰背景色 */
+    /* .promo-banner {
+      background: #E0D9E1;
       padding: 14px 20px;
       text-align: center;
       font-weight: 400;
@@ -158,7 +158,7 @@
       color: #2E2E2E;
       border-bottom: 1px solid #E8E8E8;
       letter-spacing: 0.5px;
-    }
+    } */
 
   /* ==================== 導航列 - 韓系簡約風 (滑動版) ==================== */
 
@@ -1153,9 +1153,9 @@
     </header>
 
     <!-- ==================== 促銷橫幅 ==================== -->
-    <div class="promo-banner" id="promo-banner">
+    <!-- <div class="promo-banner" id="promo-banner">
       本月預約骨骼診斷享9折優惠 · 限時至本月底
-    </div> 
+    </div>  -->
     
     <!-- ==================== 導航列 ==================== -->
     <nav>
@@ -1699,9 +1699,9 @@
       subtitle.style.fontSize = `${baseSize * 0.85}px`;
 
       // 更新促銷橫幅
-      const promoBanner = document.getElementById('promo-banner');
-      promoBanner.textContent = cfg.promo_text || defaultConfig.promo_text;
-      promoBanner.style.fontSize = `${baseSize * 0.9}px`;
+      // const promoBanner = document.getElementById('promo-banner');
+      // promoBanner.textContent = cfg.promo_text || defaultConfig.promo_text;
+      // promoBanner.style.fontSize = `${baseSize * 0.9}px`;
 
       // 更新聯絡資訊
       document.getElementById('studio-address').textContent = cfg.address || defaultConfig.address;
